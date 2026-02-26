@@ -1,0 +1,24 @@
+idle-time: 300
+kick-time: 1200
+
+# Activity points define the number of triggers that will be counted over a configured time period
+# to define where or not a player is afk
+activity-points:
+  threshold: 5
+  timeout: 5
+
+  # Number of activity points assigned to each activity, set to 0 to disable
+  triggers:
+    chat: 5
+    command: 0
+    interact: 1
+    movement: 1
+
+placeholders:
+  active: ""
+  afk: "AFK"
+
+messages:
+  now-afk: "<#b7faa2>%player% is now AFK"
+  now-active: "<#b7faa2>%player% return from AFK after %time%"
+  afk-kick: "You have been kicked for being AFK for too long!"

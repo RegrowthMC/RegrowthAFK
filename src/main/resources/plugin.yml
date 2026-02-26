@@ -1,5 +1,5 @@
-name: RegrowthAfk
+name: RegrowthAFK
 version: ${project.version}
-main: org.lushplugins.regrowthafk.RegrowthAfk
+main: org.lushplugins.regrowthafk.RegrowthAFK
 api-version: '1.21'
-github-repo: RegrowthMC/RegrowthAfk
+github-repo: RegrowthMC/RegrowthAFK

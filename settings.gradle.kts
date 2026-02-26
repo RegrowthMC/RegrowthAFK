@@ -1,1 +1,1 @@
-rootProject.name = "RegrowthAfk"
+rootProject.name = "RegrowthAFK"

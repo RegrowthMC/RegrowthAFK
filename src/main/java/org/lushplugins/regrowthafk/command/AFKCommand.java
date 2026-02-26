@@ -4,6 +4,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionDefault;
 import org.lushplugins.regrowthafk.RegrowthAFK;
 import org.lushplugins.regrowthafk.activity.ActivityStatus;
 import org.lushplugins.regrowthafk.activity.ActivityTracker;
@@ -19,7 +20,7 @@ import revxrsal.commands.bukkit.annotation.CommandPermission;
 public class AFKCommand {
 
     @Command("afk")
-    @CommandPermission("afk.set")
+    @CommandPermission(value = "afk.set", defaultAccess = PermissionDefault.TRUE)
     public void afk(
         BukkitCommandActor actor,
         @Suggest({"on", "off", "toggle"}) @Optional String state,

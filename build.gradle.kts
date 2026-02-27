@@ -20,7 +20,7 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.7-R0.1-SNAPSHOT")
 
     // Libraries
-    implementation("org.lushplugins:LushLib:0.10.88")
+    implementation("org.lushplugins:LushLib:0.10.89")
     implementation("io.github.revxrsal:lamp.common:4.0.0-rc.14")
     implementation("io.github.revxrsal:lamp.bukkit:4.0.0-rc.14")
     implementation("org.lushplugins:PlaceholderHandler:1.0.0-alpha8")

@@ -23,7 +23,7 @@ dependencies {
     implementation("org.lushplugins:LushLib:0.10.89")
     implementation("io.github.revxrsal:lamp.common:4.0.0-rc.14")
     implementation("io.github.revxrsal:lamp.bukkit:4.0.0-rc.14")
-    implementation("org.lushplugins:PlaceholderHandler:1.0.0-alpha8")
+    implementation("org.lushplugins:PlaceholderHandler:1.0.0-alpha10")
 }
 
 java {
@@ -63,6 +63,7 @@ tasks {
         minecraftVersion("1.21.11")
 
         downloadPlugins {
+            hangar("PlaceholderAPI", "2.12.2")
             modrinth("viaversion", "5.7.1")
             modrinth("viabackwards", "5.7.1")
         }

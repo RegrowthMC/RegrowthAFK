@@ -17,12 +17,14 @@ public class ActivityTracker {
     private long trackingTimestamp;
     private Long idleStartTimestamp;
     private Long afkStartTimestamp;
+    private boolean bypassedKick;
 
     public ActivityTracker(UUID uuid) {
         this.uuid = uuid;
         this.status = ActivityStatus.ACTIVE;
         this.points = 0;
         this.trackingTimestamp = System.currentTimeMillis();
+        this.bypassedKick = false;
     }
 
     public ActivityStatus getStatus() {
@@ -41,6 +43,7 @@ public class ActivityTracker {
             case ACTIVE -> {
                 this.idleStartTimestamp = null;
                 this.afkStartTimestamp = null;
+                this.bypassedKick = false;
             }
             case AFK -> {
                 this.afkStartTimestamp = now;
@@ -95,13 +98,17 @@ public class ActivityTracker {
         } else if (this.status != ActivityStatus.AFK && (now - this.idleStartTimestamp) > configManager.getIdleTime()) {
             setStatus(ActivityStatus.AFK);
             this.afkStartTimestamp = now;
-        } else if (this.status == ActivityStatus.AFK && (now - this.afkStartTimestamp) > configManager.getKickTime()) {
-            Bukkit.getScheduler().runTask(RegrowthAFK.getInstance(), () -> {
-                Player player = Bukkit.getPlayer(this.uuid);
-                if (player != null) {
-                    player.kick(ModernChatColorHandler.translate(configManager.getMessage("afk-kick")));
+        } else if (this.status == ActivityStatus.AFK && !this.bypassedKick && (now - this.afkStartTimestamp) > configManager.getKickTime()) {
+            Player player = Bukkit.getPlayer(this.uuid);
+            if (player != null) {
+                if (player.hasPermission("afk.kickbypass")) {
+                    this.bypassedKick = true;
+                } else {
+                    Bukkit.getScheduler().runTask(RegrowthAFK.getInstance(), () -> {
+                        player.kick(ModernChatColorHandler.translate(configManager.getMessage("afk-kick")));
+                    });
                 }
-            });
+            }
         }
     }
 

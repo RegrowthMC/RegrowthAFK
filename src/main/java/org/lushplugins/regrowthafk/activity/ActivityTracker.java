@@ -2,7 +2,7 @@ package org.lushplugins.regrowthafk.activity;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.lushplugins.lushlib.libraries.chatcolor.ModernChatColorHandler;
+import org.lushplugins.lushlib.libraries.chatcolor.paper.PaperColor;
 import org.lushplugins.lushlib.utils.TimeFormatter;
 import org.lushplugins.regrowthafk.RegrowthAFK;
 import org.lushplugins.regrowthafk.config.ConfigManager;
@@ -70,7 +70,7 @@ public class ActivityTracker {
                     message = message.replace("%time%", TimeFormatter.formatDuration(duration, TimeFormatter.FormatType.ABBREVIATED_FORM));
                 }
 
-                Bukkit.broadcast(ModernChatColorHandler.translate(message, player));
+                Bukkit.broadcast(PaperColor.handler().translate(message, player));
             }
         }
     }
@@ -105,7 +105,7 @@ public class ActivityTracker {
                     this.bypassedKick = true;
                 } else {
                     Bukkit.getScheduler().runTask(RegrowthAFK.getInstance(), () -> {
-                        player.kick(ModernChatColorHandler.translate(configManager.getMessage("afk-kick")));
+                        player.kick(PaperColor.handler().translate(configManager.getMessage("afk-kick")));
                     });
                 }
             }

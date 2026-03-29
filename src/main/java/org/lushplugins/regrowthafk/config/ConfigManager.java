@@ -1,7 +1,7 @@
 package org.lushplugins.regrowthafk.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
-import org.lushplugins.lushlib.utils.YamlUtils;
+import org.lushplugins.lushlib.config.YamlUtils;
 import org.lushplugins.regrowthafk.RegrowthAFK;
 import org.lushplugins.regrowthafk.activity.ActivityStatus;
 import org.lushplugins.regrowthafk.activity.ActivityType;
